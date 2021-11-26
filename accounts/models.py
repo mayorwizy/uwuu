@@ -109,7 +109,7 @@ class Year(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    user = models.OneToOneField(Account, on_delete=models.CASCADE, related_name='profile')
     email = models.EmailField(max_length=100, null=True, blank=True)
     occupation = models.CharField(null=True, blank=True, max_length=100)
     gender_choice = (
@@ -129,8 +129,7 @@ class UserProfile(models.Model):
     )
     marital_status = models.CharField(
         null=True, max_length=100, choices=marital_status_choice)
-    position = models.ForeignKey(
-        Position, default='Member', null=True, on_delete=models.CASCADE)
+    position = models.ForeignKey(Position, default=1, null=True, on_delete=models.CASCADE)
     lga = models.ForeignKey(
         LGA, null=True, on_delete=models.CASCADE)
     address = models.TextField(null=True, blank=True, max_length=200)

@@ -30,22 +30,19 @@ def register(request):
             username = email.split("@")[0]
             reg_number = reg_num
             # reg_number=form.cleaned_data['reg_number']
-            user = Account.objects.create_user(
-                first_name=first_name, last_name=last_name, email=email, username=username, password=password, reg_number=reg_number)
+            user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password, reg_number=reg_number)
             user.phone_number = phone_number,
             user.save()
-            
-            
-            UserProfile.objects.create(
-                user=user,
-                email=user.email)
-            
+
+            # UserProfile.objects.create(
+            #     user=user,
+            #     email=user.email)
+
             # profile.objects.create(
             #     user=user,
             #     email=user.email)
             # profile.save()
-            
-            
+
             # full_name = user.first_name + ' ' + user.last_name
 
             # user account activation
