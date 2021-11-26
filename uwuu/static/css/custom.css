@@ -1,0 +1,31 @@
+.text-container {
+    align-items: center;
+    margin-left: 0;
+    margin-top: 1%;
+    color: rgb(214, 166, 5);
+}
+
+.logo {
+    float: left;
+}
+
+.info {
+    color: rgb(214, 166, 5);
+}
+
+/* .info-2{
+    margin-top: 30px;
+} */
+
+.dues-head {
+    text-align: center;
+    color: rgb(214, 166, 5);
+}
+
+.uwuu-bg {
+    border: 1px solid;
+    background: url(\uwuu\static\images\uwuu_bg.png);
+    background-size: cover;
+    color: rgb(214, 166, 5);
+
+}

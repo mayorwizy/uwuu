@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="section-content padding-y bg">
+    <div class="container">
+        <H3 class="dues-head">Your Dues History</H3>
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">For</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not dues %}
+                <!-- Message  -->
+                <tr class="table-danger">
+                    <th scope="row">No Record</th>
+                    <td>No Record</td>
+                    <td>No Record</td>
+                    <td>No Record</td>
+                    {% else %}
+                    {% for due in dues %}
+                <tr class="table-success">
+                    <th scope="row">{{ due.account_holder }}</th>
+                    <td>{{due.amount}}</td>
+                    <td>{{ due.month }} {{ due.year }}</td>
+                    <td>{{ due.date }}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                {% endif %}
+
+            </tbody>
+        </table>
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

@@ -1,0 +1,76 @@
+{% load static %}
+<div class="container">
+    <header class="section-header">
+        <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+            <div class="col-lg-6 col-md-5 col-10">
+                <a href="{% url 'home' %}" class="brand-wrap">
+                    <img class="logo" src="{% static 'images/uwuu_logo.png' %}">
+                </a>
+                <div class="text-container">
+                    <h4>Urhobo World United Union</h4>
+                </div> <!-- brand-wrap.// -->
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
+                {% if user.id is None %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-container" href="{% url 'profile' %}">Welcome
+                            Guest | | |<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'login' %}">Sign in<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'register' %}"> Register<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+
+                </ul>
+                {% else %}
+                <div>
+                    <ul class="navbar-nav mr-auto text-container">
+                        <li class="nav-item active text-container">
+                            <a class="nav-link text-container" href="{% url 'profile' %}">Welcome
+                                {{ user.first_name }} | <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'dues' %}">View Dues Status<span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'edit_profile' %}"> Update Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
+                                <div class="dropdown-divider"></div>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'logout' %}"> Logout<span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+                {% endif %}
+
+            </div>
+        </nav>
+    </header>
+</div>
